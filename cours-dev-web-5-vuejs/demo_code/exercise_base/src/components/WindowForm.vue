@@ -35,7 +35,8 @@ export default {
   methods: {
     async createWindow() {
       let response = await axios.post(`${API_HOST}/api/windows`, this.form);
-      window.location.reload();
+      let newWindow = response.data;
+      this.$emit('window-created', newWindow);
     }
   }
 }

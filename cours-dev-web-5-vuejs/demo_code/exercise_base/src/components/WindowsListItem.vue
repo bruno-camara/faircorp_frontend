@@ -55,7 +55,7 @@ export default {
     },
     async deleteWindow() {
       let response = await axios.delete(`${API_HOST}/api/windows/${this.window.id}`);
-      window.location.reload();
+      this.$emit('window-deleted');
     }
   }
 }
