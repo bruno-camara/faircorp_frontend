@@ -1,19 +1,42 @@
 <template>
-  <form action="/action_page.php">
-    <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name"><br>
-    <label for="lname">Window Status:</label><br>
-    <input type="text" id="status" name="status"><br><br>
-    <label for="name">Room Name:</label><br>
-    <input type="text" id="rname" name="rname"><br>
-    <label for="lname">Room Id:</label><br>
-    <input type="number" id="rid" name="rid"><br><br>
-    <input type="submit" value="Submit">
-  </form>
+  <!-- based off https://serversideup.net/post-put-patch-requests-with-vuejs-and-axios/ -->
+  <div class="window border border-secondary rounded p-2 mb-2">
+      <label for="name">Name:</label><br>
+      <input type="text" v-model = "form.name"><br>
+      <label for="status">Window Status:</label><br>
+      <select class="form-control" v-model = "form.windowStatus">
+        <option>OPEN</option>
+        <option>CLOSED</option>
+      </select>
+      <label for="rname">Room Name:</label><br>
+      <input type="text" v-model = "form.roomName"><br>
+      <label for="rid">Room Id:</label><br>
+      <input type="number" v-model = "form.roomId"><br><br>
+      <button v-on:click="createWindow()">Submit</button>
+  </div>
 </template>
 
 <script>
+import axios from 'axios';
+import {API_HOST} from '../config';
+
 export default {
-  name: 'WindowForm'
+  name: 'WindowForm',
+  data(){
+        return {
+            form: {
+                name: '',
+                windowStatus: '',
+                roomName: '',
+                roomId: 0
+            }
+        }
+    },
+  methods: {
+    async createWindow() {
+      let response = await axios.post(`${API_HOST}/api/windows`, this.form);
+      window.location.reload();
+    }
+  }
 }
 </script>
