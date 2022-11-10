@@ -3,7 +3,7 @@ FrontEnd project of the building system
 
 ## To Do
 - [X] Delete window functionality
-- [ ] Create window form
+- [X] Create window form
 - [ ] List rooms
 - [ ] Update rooms
 - [ ] Create rooms
