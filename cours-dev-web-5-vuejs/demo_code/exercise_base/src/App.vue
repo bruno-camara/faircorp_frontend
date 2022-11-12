@@ -9,7 +9,8 @@
     <main-navigation></main-navigation>
     <windows-list></windows-list>
     <window-form></window-form>
-
+    <rooms-list></rooms-list>
+    <room-form></room-form>
       
     </section>
 
@@ -20,12 +21,16 @@
 import MainNavigation from './components/MainNavigation.vue';
 import WindowsList from './components/WindowsList.vue';
 import WindowForm from './components/WindowForm.vue';
+import RoomsList from './components/RoomsList.vue';
+import RoomForm from './components/RoomForm.vue';
 export default {
   name: 'App',
   components: {
   MainNavigation,
   WindowsList,
-  WindowForm
+    WindowForm,
+  RoomsList,
+    RoomForm
   }
 }
 </script>

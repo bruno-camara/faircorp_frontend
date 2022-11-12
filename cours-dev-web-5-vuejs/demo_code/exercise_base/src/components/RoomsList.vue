@@ -1,13 +1,21 @@
 <template>
-    
+      <div class="rooms-list pt-3">
+    <rooms-list-item
+    v-for="room in rooms"
+          :room="room"
+          :key="room.id"
+          @room-updated="updateRoom"
+          @room-deleted="refresh"></rooms-list-item>
+    <room-form @room-created="createRoom"></room-form>
+  </div>
 </template>
 
 <script>
 
 import axios from 'axios';
 import {API_HOST} from '../config';
-import WindowsListItem from './RoomsListItem.vue';
-import WindowForm from './RoomForm.vue';
+import RoomsListItem from './RoomsListItem.vue';
+import RoomForm from './RoomForm.vue';
 
 export default{
     name: 'RoomsList',
