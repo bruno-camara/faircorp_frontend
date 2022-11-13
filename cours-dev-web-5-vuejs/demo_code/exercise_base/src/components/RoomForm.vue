@@ -5,6 +5,8 @@
       <input type="text" v-model = "form.name"><br>
       <label for="bid">Building Id:</label><br>
       <input type="number" v-model = "form.buildingId"><br><br>
+       <label for="floor">Floor:</label><br>
+      <input type="number" v-model = "form.floor"><br><br>
       <button v-on:click="createRoom()">Submit</button>
   </div>
 </template>
@@ -19,12 +21,13 @@ export default {
         return {
             form: {
                 name: '',
-                buildingId: 0
+                buildingId: 0,
+                floor: 0
             }
         }
     },
   methods: {
-    async createWindow() {
+    async createRoom() {
       let response = await axios.post(`${API_HOST}/api/rooms`, this.form);
       let newRoom = response.data;
       this.$emit('room-created', newRoom);
