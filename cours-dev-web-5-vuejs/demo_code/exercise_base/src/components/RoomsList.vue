@@ -34,6 +34,11 @@ export default{
         this.rooms = rooms;
     },
     methods: {
+        updateWindow(newRoom) {
+            /* Find the place of room object with the same Id in the array, and replace it */
+            let index = this.rooms.findIndex(room => room.id === newRoom.id);
+            this.rooms.splice(index, 1, newRoom);
+        },
         createRoom(newRoom){
             this.rooms.push(newRoom);
         },
