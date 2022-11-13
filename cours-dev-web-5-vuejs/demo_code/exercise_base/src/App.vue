@@ -1,37 +1,22 @@
 <template>
-  <div id="app">
+    <div id="app">
     <header>
       <div class="title">Smart Building Managment</div>
     </header>
 
     <section class="main-content w-50 mx-auto">
-    
-    <main-navigation></main-navigation>
-    <windows-list></windows-list>
-    <window-form></window-form>
-    <rooms-list></rooms-list>
-    <room-form></room-form>
-      
+      <main-navigation></main-navigation>
     </section>
-
   </div>
 </template>
 
 <script>
 import MainNavigation from './components/MainNavigation.vue';
-import WindowsList from './components/WindowsList.vue';
-import WindowForm from './components/WindowForm.vue';
-import RoomsList from './components/RoomsList.vue';
-import RoomForm from './components/RoomForm.vue';
 export default {
   name: 'App',
   components: {
-  MainNavigation,
-  WindowsList,
-    WindowForm,
-  RoomsList,
-    RoomForm
-  }
+    MainNavigation
+  },
 }
 </script>
 
