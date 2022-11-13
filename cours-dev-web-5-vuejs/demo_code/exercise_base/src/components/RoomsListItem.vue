@@ -36,8 +36,8 @@ import {API_HOST} from '../config';
              this.$emit('room-update', updateRoom);
          },
 
-         async deleteWindow(){
-             let response = await axios.delete(`${API_HOST}/api/rooms/${this.window.id}`);
+         async deleteRoom(){
+             let response = await axios.delete(`${API_HOST}/api/rooms/${this.room.id}`);
              this.$emit('room-deleted');
          }
 
