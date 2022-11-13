@@ -3,8 +3,6 @@
   <div class="room border border-secondary rounded p-2 mb-2">
       <label for="name">Name:</label><br>
       <input type="text" v-model = "form.name"><br>
-      <label for="bname">Building Name:</label><br>
-      <input type="text" v-model = "form.buildingName"><br>
       <label for="bid">Building Id:</label><br>
       <input type="number" v-model = "form.buildingId"><br><br>
       <button v-on:click="createRoom()">Submit</button>
@@ -21,7 +19,6 @@ export default {
         return {
             form: {
                 name: '',
-                buildingName: '',
                 buildingId: 0
             }
         }
