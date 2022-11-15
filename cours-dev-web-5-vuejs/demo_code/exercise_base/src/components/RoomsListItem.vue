@@ -10,7 +10,7 @@
     <template v-if="isExpanded">
       <hr/>
       <div class="details d-flex">
-        <input type="number" v-model = "room.targetTemperature"><br><br>
+        <input type="number" v-model = "temp"><br><br>
         <button type="button" class="btn btn-secondary me-2"  @click="switchRoom"> Change Target Temperature </button>
         <button type="button" class="btn btn-danger" @click="deleteRoom">Delete Room</button>
       </div>
@@ -26,14 +26,18 @@ import {API_HOST} from '../config';
      name: 'RoomsListItem',
      props: ['room'],
      data: function (){
-         return {isExpanded: false}
-     },
+         return {
+            isExpanded: false,
+            temp: 0
+        }
+    },
      methods: {
          toggleExpand() {
              this.isExpanded = !this.isExpanded;
          },
          async switchRoom() {
-             let response = await axios.put(`${API_HOST}/api/rooms/${this.room.id}/switch`);
+             this.room.targetTemperature = this.temp;
+             let response = await axios.post(`${API_HOST}/api/rooms/`, this.room);
              let updateRoom = response.data;
              this.$emit('room-update', updateRoom);
          },

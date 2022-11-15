@@ -8,6 +8,11 @@
        <label for="floor">Floor:</label><br>
       <input type="number" v-model = "form.floor"><br><br>
       <button v-on:click="createRoom()">Submit</button>
+      <div v-if="errors.length > 0">
+       <span v-for="error in errors" :key="error">
+        {{error}},
+       </span>
+      </div>
   </div>
 </template>
 
@@ -19,6 +24,7 @@ export default {
   name: 'RoomForm',
   data(){
         return {
+            errors: [],
             form: {
                 name: '',
                 buildingId: 0,
@@ -28,9 +34,22 @@ export default {
     },
   methods: {
     async createRoom() {
-      let response = await axios.post(`${API_HOST}/api/rooms`, this.form);
-      let newRoom = response.data;
-      this.$emit('room-created', newRoom);
+      this.errors = [];
+      if (!this.form.name) {
+      this.errors.push('Room name required');
+      }
+      if (!this.form.buildingId) {
+      this.errors.push('Building ID required');
+      }
+      if (!this.form.floor) {
+      this.errors.push('Floor required');
+      }
+      if (this.errors.length == 0)
+      {
+        let response = await axios.post(`${API_HOST}/api/rooms`, this.form);
+        let newRoom = response.data;
+        this.$emit('room-created', newRoom);
+      }
     }
   }
 }

@@ -13,6 +13,11 @@
       <label for="rid">Room Id:</label><br>
       <input type="number" v-model = "form.roomId"><br><br>
       <button v-on:click="createWindow()">Submit</button>
+      <div v-if="errors.length > 0">
+       <span v-for="error in errors" :key="error">
+        {{error}},
+       </span>
+      </div>
   </div>
 </template>
 
@@ -24,6 +29,7 @@ export default {
   name: 'WindowForm',
   data(){
         return {
+            errors: [],
             form: {
                 name: '',
                 windowStatus: '',
@@ -34,9 +40,22 @@ export default {
     },
   methods: {
     async createWindow() {
-      let response = await axios.post(`${API_HOST}/api/windows`, this.form);
-      let newWindow = response.data;
-      this.$emit('window-created', newWindow);
+      this.errors = [];
+      if (!this.form.name) {
+      this.errors.push('Window name required');
+      }
+      if (!this.form.windowStatus) {
+      this.errors.push('Window status required');
+      }
+      if (!this.form.roomId) {
+      this.errors.push('Room ID required');
+      }
+      if (this.errors.length == 0)
+      {
+        let response = await axios.post(`${API_HOST}/api/windows`, this.form);
+        let newWindow = response.data;
+        this.$emit('window-created', newWindow);
+      }
     }
   }
 }
