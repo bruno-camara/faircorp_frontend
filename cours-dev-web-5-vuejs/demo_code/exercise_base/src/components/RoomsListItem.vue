@@ -2,7 +2,7 @@
   <div class="room border border-secondary rounded p-2 mb-2" :class="{expanded: isExpanded}">
     <div class="top-row d-flex" @click="toggleExpand">
       <div class="room-name fw-bold pe-3">{{room.name}}</div>
-      <div class="building-name text-muted">{{room.buildingId}}</div>
+      <div class="room-temperature text-muted">{{room.targetTemperature}}</div>
       <div class="expand-button ms-auto">
         {{ isExpanded ? '&#9660;' : '&#9658;' }}
       </div>
@@ -10,6 +10,8 @@
     <template v-if="isExpanded">
       <hr/>
       <div class="details d-flex">
+        <input type="number" v-model = "room.targetTemperature"><br><br>
+        <button type="button" class="btn btn-secondary me-2"  @click="switchRoom"> Change Target Temperature </button>
         <button type="button" class="btn btn-danger" @click="deleteRoom">Delete Room</button>
       </div>
     </template>
