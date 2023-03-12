@@ -20,3 +20,13 @@ For the Rooms:
 * Read the target temperature in a room
 * Update the target temperature in a room
 * Delete a room
+
+## Run with Docker
+To deploy the project locally you can use Docker with the following commands:
+- Go to the [exercise_base](./cours-dev-web-5-vuejs/demo_code/exercise_base/) folder and run:
+
+```bash
+docker build -t vuejs-cookbook/dockerize-vuejs-app .
+
+docker run -it -p 8080:8080 -e PORT=8080 --rm --name faircorp-frontend vuejs-cookbook/dockerize-vuejs-app
+```
