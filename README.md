@@ -30,3 +30,27 @@ docker build -t vuejs-cookbook/dockerize-vuejs-app .
 
 docker run -it -p 8080:8080 -e PORT=8080 --rm --name faircorp-frontend vuejs-cookbook/dockerize-vuejs-app
 ```
+
+## Docker Compose
+> Deploy front and backend with a single command
+
+### How to run:
+1. Clone both repositories in your root folder
+
+```bash
+cd #goes to your root folder
+git clone git@github.com:bruno-camara/faircorp.git
+git clone git@github.com:bruno-camara/faircorp_frontend.git
+```
+
+2. Enter in the frontend directory
+
+```bash
+cd ~/faircorp_frontend/cours-dev-web-5-vuejs/demo_code/exercise_base/
+```
+
+3. Run docker compose
+
+```bash
+docker compose up
+```

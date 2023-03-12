@@ -18,7 +18,7 @@ COPY . .
 # build app for production with minification
 RUN npm run build
 
-ENV FRONT_PORT "8080"
+ENV FRONT_PORT "8000"
 
-EXPOSE 8080
+EXPOSE 8000
 CMD [ "http-server", "dist" ]
